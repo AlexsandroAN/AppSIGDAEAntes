@@ -3,4 +3,8 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    //
+    <color name="padraoGovVerde">#00953b</color>
+    <color name="padraoGovLaranja">#ff6d10</color>
+    <color name="padraoGovCinzaEscuro">#4a4f55</color>
 </resources>
