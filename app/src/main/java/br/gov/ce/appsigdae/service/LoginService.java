@@ -74,7 +74,7 @@ public class LoginService {
                         editor.putString("email", listaUser.get(0).getEmail());
                         editor.commit();
 
-                        // Chamar a Tela de HOme
+                        // Chamar a Tela de Home
                         Intent intent = new Intent(activity, Home.class);
                         activity.startActivity(intent);
                         activity.finish();

@@ -9,4 +9,5 @@
     <string name="voltar">Voltar</string>
     //
     <string name="btn_entrar">Entrar</string>
+    <string name="title_activity_home">Home</string>
 </resources>
