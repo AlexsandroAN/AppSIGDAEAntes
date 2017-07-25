@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">SIGDAE</string>
+    //
+    <string name="usuarioHint">Usuário</string>
+    <string name="senhaHint">Senha</string>
+    //
+    <string name="sair">Sair</string>
+    <string name="logout">Logout</string>
+    <string name="voltar">Voltar</string>
+    //
+    <string name="btn_entrar">Entrar</string>
 </resources>
