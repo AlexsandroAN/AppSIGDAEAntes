@@ -5,6 +5,13 @@
     tools:context="br.gov.ce.appsigdae.Home">
 
     <item
+        android:id="@+id/action_search"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="Search"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="always|collapseActionView" />
+
+    <item
         android:id="@+id/sair"
         android:orderInCategory="100"
         android:title="@string/sair" />

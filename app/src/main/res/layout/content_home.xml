@@ -14,14 +14,6 @@
         android:layout_height="match_parent"
         android:padding="10dp">
 
-     <!--   <EditText
-            android:id="@+id/edtText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableRight="@drawable/lupa"
-            android:hint="Pesquisar..."
-            android:inputType="text"/>-->
-
         <ListView
             android:id="@+id/listaObras"
             android:layout_width="match_parent"
