@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
@@ -61,7 +62,7 @@ public class Home extends AppCompatActivity {
         // <editor-fold defaultstate="collapsed" desc=">>> Configurações do Toolbar">
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("SIGDAE Mobile");
+        getSupportActionBar().setTitle("Minhas Obras");
         // </editor-fold>
 
         // <editor-fold defaultstate="collapsed" desc=">>> Buscando as Preferências do App">
@@ -102,34 +103,6 @@ public class Home extends AppCompatActivity {
                 toast.show();
             }
         });
-        // </editor-fold>
-
-        // <editor-fold defaultstate="collapsed" desc=">>> Filtro Inativo">
-        /* EditText filter = (EditText) findViewById(R.id.edtText);
-        filter.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String string = s.toString();
-                if (!s.equals(string.toUpperCase())) {
-                    string = string.toUpperCase();
-                }
-                adapter.getFilter().filter(string.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                String string = s.toString();
-                if (!s.equals(string.toUpperCase())) {
-                    string = string.toUpperCase();
-                }
-                adapter.getFilter().filter(string.toString());
-            }
-        });*/
         // </editor-fold>
 
         // <editor-fold defaultstate="collapsed" desc=">>> NavigationView">
@@ -215,10 +188,25 @@ public class Home extends AppCompatActivity {
     }
     // </editor-fold>
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_home, menu);
+
+        MenuItem menuItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
         return true;
     }
 
@@ -226,6 +214,11 @@ public class Home extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent;
         SharedPreferences.Editor editor;
+
+        if (item.getItemId() == R.id.action_search) {
+            return true;
+        }
+
         switch (item.getItemId()) {
             case R.id.sair:
                 editor = getSharedPreferences("pref", Context.MODE_PRIVATE).edit();
