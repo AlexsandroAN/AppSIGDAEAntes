@@ -8,4 +8,88 @@
     tools:context="br.gov.ce.appsigdae.VoDadosObra"
     tools:showIn="@layout/activity_vo_dados_obra">
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/descricaoObra"
+            android:textColor="@color/padraoGovVerde"
+            style="@style/TxtAtributoCentralizado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:layout_below="@+id/descricaoObra"
+            android:layout_marginTop="5dp"
+            android:background="@color/padraoGovVerde" />
+
+        <TextView
+            android:id="@+id/labelVlAtual"
+            style="@style/TxtLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/descricaoObra"
+            android:text="Valor Atual" />
+
+        <TextView
+            android:id="@+id/vlAtual"
+            style="@style/TxtAtributo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/labelVlAtual"
+            android:layout_toRightOf="@+id/labelVlAtual"
+            android:gravity="right"
+            android:inputType="numberDecimal" />
+
+        <TextView
+            android:id="@+id/labelVlMedido"
+            style="@style/TxtLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/labelVlAtual"
+            android:text="Total Medido" />
+
+        <TextView
+            android:id="@+id/vlMedido"
+            style="@style/TxtAtributo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/labelVlMedido"
+            android:layout_toRightOf="@+id/labelVlMedido"
+            android:gravity="right"
+            android:textColor="@color/md_red_900" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:layout_below="@+id/vlMedido"
+            android:layout_marginTop="5dp"
+            android:background="@color/md_black_1000" />
+
+        <TextView
+            android:id="@+id/labelVlSaldo"
+            style="@style/TxtLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/vlMedido"
+            android:text="Saldo" />
+
+        <TextView
+            android:id="@+id/vlSaldo"
+            style="@style/TxtAtributo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/labelVlSaldo"
+            android:layout_toRightOf="@+id/labelVlSaldo"
+            android:gravity="right"
+            android:textColor="@color/md_blue_900" />
+
+    </RelativeLayout>
+
+
 </android.support.constraint.ConstraintLayout>
