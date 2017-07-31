@@ -192,29 +192,12 @@ public class Home extends AppCompatActivity {
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            // Object obras = listaVoObras.get(position);
-
-            StringBuilder info = new StringBuilder();
-            info.append("Còdigo: " + listaVoObras.get(position).getCodigoObra());
-            info.append("\nDescrição: " + listaVoObras.get(position).getDescricaoObra());
-            info.append("\nMunicípio: " + listaVoObras.get(position).getMunicipio());
-            info.append("\nStatus: " + listaVoObras.get(position).getStatusObra());
-            info.append("\nContratante: " + listaVoObras.get(position).getContratanteNomeFantasia());
-            info.append("\nContratada: " + listaVoObras.get(position).getContratadaNomeFantasia());
-
-            //Toast toast = Toast.makeText(VoDadosObras.this, info, Toast.LENGTH_LONG);
-            //toast.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL, 0, 0);
-            //toast.show();
-
-            VoObras obra = new VoObras();
-            obra = listaVoObras.get(position);
 
             Intent i = new Intent(Home.this, VoDadosObra.class);
-            i.putExtra("obra", obra);
+            i.putExtra("obra", listaVoObras.get(position));
             startActivity(i);
             finish();
 
-            // Toast.makeText(VoDadosObras.this, info, Toast.LENGTH_SHORT).show();
         }
     };
     // </editor-fold>
