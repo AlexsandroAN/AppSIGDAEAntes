@@ -2,24 +2,25 @@ package br.gov.ce.appsigdae;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.TextView;
 
-import java.text.NumberFormat;
-import java.util.Locale;
-
+import br.gov.ce.appsigdae.adapter.ViewPagerAdapter;
 import br.gov.ce.appsigdae.entity.VoObras;
+import br.gov.ce.appsigdae.fragment.FragmentMedicoes;
+import br.gov.ce.appsigdae.fragment.FragmentObra;
 
 public class VoDadosObra extends AppCompatActivity {
 
     private VoObras voObras;
-    private TextView descricaoObra, vlAtual, vlMedido, vlSaldo;
-
-    // Formatando BIgDecimal
-    Locale ptBr = new Locale("pt", "BR");
-    NumberFormat formato = NumberFormat.getCurrencyInstance(ptBr);
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+    private FragmentObra fragmentObra;
+    private FragmentMedicoes fragmentMedicoes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,18 +37,28 @@ public class VoDadosObra extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         // </editor-fold>
 
-        voObras = (VoObras) getIntent().getExtras().getSerializable("obra");
-        descricaoObra = (TextView) findViewById(R.id.descricaoObra);
-        vlAtual = (TextView) findViewById(R.id.vlAtual);
-        vlMedido = (TextView) findViewById(R.id.vlMedido);
-        vlSaldo = (TextView) findViewById(R.id.vlSaldo);
+        viewPager = (android.support.v4.view.ViewPager) findViewById(R.id.viewPager);
+        configurarViewPager(viewPager);
+        enviaDadosParaOFragment(fragmentObra, voObras);
 
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
+    }
 
-        // Setando Valores
-        descricaoObra.setText(voObras.getDescricaoObra());
-        vlAtual.setText(formato.format(voObras.getValorAtual()));
-        vlMedido.setText(formato.format(voObras.getTotalExecutado()));
-        vlSaldo.setText(formato.format(voObras.getSaldoAMedir()));
+    private void configurarViewPager(ViewPager viewPager) {
+        fragmentObra = new FragmentObra();
+        fragmentMedicoes = new FragmentMedicoes();
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPagerAdapter.addFragment(fragmentObra, "Dados");
+        viewPagerAdapter.addFragment(fragmentMedicoes, "Medições");
+        viewPager.setAdapter(viewPagerAdapter);
+    }
+
+    //Envia dados para o fragment
+    public void enviaDadosParaOFragment(Fragment fragment, VoObras obra) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("obra", obra);
+        fragment.setArguments(bundle);
     }
 
     @Override
