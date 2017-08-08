@@ -13,12 +13,12 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 import br.gov.ce.appsigdae.R;
-import br.gov.ce.appsigdae.entity.VoObras;
+import br.gov.ce.appsigdae.entity.Obra;
 
 public class FragmentObra extends Fragment {
 
     private TextView descricaoObra, vlAtual, vlMedido, vlSaldo;
-    private VoObras voObras;
+    private Obra obra;
 
     // Formatando BIgDecimal
     Locale ptBr = new Locale("pt", "BR");
@@ -33,7 +33,7 @@ public class FragmentObra extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Intent i = getActivity().getIntent();
-        voObras = (VoObras) i.getSerializableExtra("obra");
+        obra = (Obra) i.getSerializableExtra("obra");
         View view = inflater.inflate(R.layout.fragment_obra, container, false);
 
         // <editor-fold defaultstate="collapsed" desc=">>> Setando Valores">
@@ -42,10 +42,10 @@ public class FragmentObra extends Fragment {
         vlMedido = (TextView) view.findViewById(R.id.vlMedido);
         vlSaldo = (TextView) view.findViewById(R.id.vlSaldo);
         //
-        descricaoObra.setText(voObras.getDescricaoObra());
-        vlAtual.setText(formato.format(voObras.getValorAtual()));
-        vlMedido.setText(formato.format(voObras.getTotalExecutado()));
-        vlSaldo.setText(formato.format(voObras.getSaldoAMedir()));
+        descricaoObra.setText(obra.getDescricaoObra());
+        vlAtual.setText(formato.format(obra.getValorAtual()));
+        vlMedido.setText(formato.format(obra.getTotalExecutado()));
+        vlSaldo.setText(formato.format(obra.getSaldoAMedir()));
         // </editor-fold>
 
         return view;

@@ -43,7 +43,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.gov.ce.appsigdae.async.AsyncLoginHttpClient;
-import br.gov.ce.appsigdae.entity.VoObras;
+import br.gov.ce.appsigdae.entity.Obra;
+import br.gov.ce.appsigdae.repository.BancoController;
+import br.gov.ce.appsigdae.repository.ObraRepository;
 import cz.msebera.android.httpclient.Header;
 
 public class Home extends AppCompatActivity {
@@ -51,14 +53,17 @@ public class Home extends AppCompatActivity {
     private Drawer drawer;
     private ViewPager viewPager;
     private static final long ID_ND_FOOTER = 500;
-    private List<VoObras> listaVoObras = new ArrayList<VoObras>();
+    private List<Obra> listaObra = new ArrayList<Obra>();
     private ListView listaObras;
     ArrayAdapter adapter;
+    private ObraRepository obraRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        obraRepository = new ObraRepository(this);
 
         // <editor-fold defaultstate="collapsed" desc=">>> Configurações do Toolbar">
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -88,17 +93,19 @@ public class Home extends AppCompatActivity {
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 final Gson gson = new Gson();
 
-                Type type = new TypeToken<List<VoObras>>() {
+                Type type = new TypeToken<List<Obra>>() {
                 }.getType();
-                listaVoObras = gson.fromJson(response.toString(), type);
+                listaObra = gson.fromJson(response.toString(), type);
 
                 listaObras = (ListView) findViewById(R.id.listaObras);
                 adapter = new ArrayAdapter(Home.this, android.R.layout.simple_list_item_1);
                 setArrayAdapterObras();
 
+                salvarObra();
+
                 listaObras.setOnItemClickListener(clickListenerObras);
 
-                Integer qtdObra = listaVoObras.size();
+                Integer qtdObra = listaObra.size();
                 Toast toast = Toast.makeText(Home.this, "Encontrado " + qtdObra.toString() + " Obra(s)", Toast.LENGTH_LONG);
                 toast.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL, 0, 0);
                 toast.show();
@@ -160,11 +167,20 @@ public class Home extends AppCompatActivity {
     }
 
     // <editor-fold defaultstate="collapsed" desc=">>> Métodos">
+
+
+    public void salvarObra() {
+        BancoController crud = new BancoController(getBaseContext());
+        for (Obra obra : listaObra) {
+            crud.inserirObra(obra);
+        }
+    }
+
     private void setArrayAdapterObras() {
         List<String> valores = new ArrayList<String>();
         int qtdObra = 1;
-        for (VoObras obras : listaVoObras) {
-            valores.add(obras.getCodigoObra());
+        for (Obra obra : listaObra) {
+            valores.add(obra.getCodigoObra());
             qtdObra++;
         }
         adapter.clear();
@@ -194,7 +210,7 @@ public class Home extends AppCompatActivity {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
             Intent i = new Intent(Home.this, VoDadosObra.class);
-            i.putExtra("obra", listaVoObras.get(position));
+            i.putExtra("obra", listaObra.get(position));
             startActivity(i);
             finish();
 

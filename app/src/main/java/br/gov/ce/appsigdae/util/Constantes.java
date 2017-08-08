@@ -7,4 +7,8 @@ public class Constantes {
 
     public static final String BASE_URL = "http://192.168.2.27:8080/sie-dae-web/restAPI/";
 
+    public static final String NOME_BD = "";
+
+    public static final int VERSAO_BD = 1;
+
 }

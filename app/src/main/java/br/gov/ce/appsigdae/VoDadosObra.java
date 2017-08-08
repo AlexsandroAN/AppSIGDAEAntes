@@ -10,39 +10,42 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import br.gov.ce.appsigdae.adapter.ViewPagerAdapter;
-import br.gov.ce.appsigdae.entity.VoObras;
+import br.gov.ce.appsigdae.entity.Obra;
 import br.gov.ce.appsigdae.fragment.FragmentMedicoes;
 import br.gov.ce.appsigdae.fragment.FragmentObra;
+import br.gov.ce.appsigdae.repository.CriaBanco;
 
 public class VoDadosObra extends AppCompatActivity {
 
-    private VoObras voObras;
+    private Obra obra;
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private FragmentObra fragmentObra;
     private FragmentMedicoes fragmentMedicoes;
+    private CriaBanco dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vo_dados_obra);
 
-        voObras = (VoObras) getIntent().getExtras().getSerializable("obra");
+        obra = (Obra) getIntent().getExtras().getSerializable("obra");
 
         // <editor-fold defaultstate="collapsed" desc=">>> Configurações do Toolbar">
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(voObras.getCodigoObra());
+        getSupportActionBar().setTitle(obra.getCodigoObra());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         // </editor-fold>
 
         viewPager = (android.support.v4.view.ViewPager) findViewById(R.id.viewPager);
         configurarViewPager(viewPager);
-        enviaDadosParaOFragment(fragmentObra, voObras);
+        enviaDadosParaOFragment(fragmentObra, obra);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
     }
 
     private void configurarViewPager(ViewPager viewPager) {
@@ -55,7 +58,7 @@ public class VoDadosObra extends AppCompatActivity {
     }
 
     //Envia dados para o fragment
-    public void enviaDadosParaOFragment(Fragment fragment, VoObras obra) {
+    public void enviaDadosParaOFragment(Fragment fragment, Obra obra) {
         Bundle bundle = new Bundle();
         bundle.putSerializable("obra", obra);
         fragment.setArguments(bundle);
