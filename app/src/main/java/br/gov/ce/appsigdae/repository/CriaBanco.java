@@ -24,13 +24,14 @@ public class CriaBanco extends SQLiteOpenHelper {
         query.append(" ID INTEGER PRIMARY KEY AUTOINCREMENT,");
         query.append(" CODIGO TEXT(30) NOT NULL,");
         query.append(" DESCRICAO TEXT(500), ");
-        query.append(" MUNICIPIO TEXT(500), ");
-        query.append(" STATUS TEXT(500), ");
-        query.append(" CONTRATANTE TEXT(500), ");
-        query.append(" VALOR_ATUAL TEXT(500), ");
-        query.append(" TOTAL_EXECUTADO TEXT(500), ");
-        query.append(" SALDO_A_MEDIR TEXT(500), ");
-        query.append(" CONTRATADA TEXT(500))");
+        query.append(" MUNICIPIO TEXT(50), ");
+        query.append(" STATUS TEXT(50), ");
+        query.append(" CONTRATANTE TEXT(50), ");
+        query.append(" VALOR_ATUAL TEXT(12), ");
+        query.append(" TOTAL_EXECUTADO TEXT(12), ");
+        query.append(" SALDO_A_MEDIR TEXT(12), ");
+        query.append(" CONTRATADA TEXT(50), ");
+        query.append(" MATRICULA_FISCAL TEXT(12))");
 
         db.execSQL(query.toString());
     }

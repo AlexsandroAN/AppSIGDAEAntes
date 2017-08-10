@@ -32,6 +32,7 @@ public class FragmentObra extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         Intent i = getActivity().getIntent();
         obra = (Obra) i.getSerializableExtra("obra");
         View view = inflater.inflate(R.layout.fragment_obra, container, false);

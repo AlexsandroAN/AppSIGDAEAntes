@@ -1,6 +1,8 @@
 package br.gov.ce.appsigdae;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -13,7 +15,6 @@ import br.gov.ce.appsigdae.adapter.ViewPagerAdapter;
 import br.gov.ce.appsigdae.entity.Obra;
 import br.gov.ce.appsigdae.fragment.FragmentMedicoes;
 import br.gov.ce.appsigdae.fragment.FragmentObra;
-import br.gov.ce.appsigdae.repository.CriaBanco;
 
 public class VoDadosObra extends AppCompatActivity {
 
@@ -22,7 +23,9 @@ public class VoDadosObra extends AppCompatActivity {
     private ViewPager viewPager;
     private FragmentObra fragmentObra;
     private FragmentMedicoes fragmentMedicoes;
-    private CriaBanco dbHelper;
+    //private SQLiteDatabase db;
+    //private CriaBanco banco;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +69,10 @@ public class VoDadosObra extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        SharedPreferences.Editor editor = getSharedPreferences("pref", Context.MODE_PRIVATE).edit();
+        editor.putString("logado", "nao");
+        editor.commit();
+
         Intent i = new Intent(this, Home.class);
         startActivity(i);
         finish();

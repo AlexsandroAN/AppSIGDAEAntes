@@ -60,7 +60,5 @@ public class Login extends AppCompatActivity {
                 loginService.validarCamposLogin(validation);
             }
         });
-
-
     }
 }

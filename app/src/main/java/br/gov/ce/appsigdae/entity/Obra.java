@@ -1,7 +1,6 @@
 package br.gov.ce.appsigdae.entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 /**
  * Created by 39091 on 02/08/2017.
@@ -21,19 +20,21 @@ public class Obra implements Serializable {
 
     private String contratanteNomeFantasia;
 
-    private BigDecimal valorAtual;
+    private Double valorAtual;
 
-    private BigDecimal totalExecutado;
+    private Double totalExecutado;
 
-    private BigDecimal saldoAMedir;
+    private Double saldoAMedir;
 
     private String contratadaNomeFantasia;
+
+    private String matriculaFiscal;
 
     public Obra() {
 
     }
 
-    public Obra(Integer id, String codigoObra, String descricaoObra, String municipio, String statusObra, String contratanteNomeFantasia, BigDecimal valorAtual, BigDecimal totalExecutado, BigDecimal saldoAMedir, String contratadaNomeFantasia) {
+    public Obra(Integer id, String codigoObra, String descricaoObra, String municipio, String statusObra, String contratanteNomeFantasia, Double valorAtual, Double totalExecutado, Double saldoAMedir, String contratadaNomeFantasia, String matriculaFiscal) {
         this.id = id;
         this.codigoObra = codigoObra;
         this.descricaoObra = descricaoObra;
@@ -44,6 +45,8 @@ public class Obra implements Serializable {
         this.totalExecutado = totalExecutado;
         this.saldoAMedir = saldoAMedir;
         this.contratadaNomeFantasia = contratadaNomeFantasia;
+        this.contratadaNomeFantasia = contratadaNomeFantasia;
+        this.matriculaFiscal = matriculaFiscal;
     }
 
     public Integer getId() {
@@ -94,27 +97,27 @@ public class Obra implements Serializable {
         this.contratanteNomeFantasia = contratanteNomeFantasia;
     }
 
-    public BigDecimal getValorAtual() {
+    public Double getValorAtual() {
         return valorAtual;
     }
 
-    public void setValorAtual(BigDecimal valorAtual) {
+    public void setValorAtual(Double valorAtual) {
         this.valorAtual = valorAtual;
     }
 
-    public BigDecimal getTotalExecutado() {
+    public Double getTotalExecutado() {
         return totalExecutado;
     }
 
-    public void setTotalExecutado(BigDecimal totalExecutado) {
+    public void setTotalExecutado(Double totalExecutado) {
         this.totalExecutado = totalExecutado;
     }
 
-    public BigDecimal getSaldoAMedir() {
+    public Double getSaldoAMedir() {
         return saldoAMedir;
     }
 
-    public void setSaldoAMedir(BigDecimal saldoAMedir) {
+    public void setSaldoAMedir(Double saldoAMedir) {
         this.saldoAMedir = saldoAMedir;
     }
 
@@ -124,6 +127,14 @@ public class Obra implements Serializable {
 
     public void setContratadaNomeFantasia(String contratadaNomeFantasia) {
         this.contratadaNomeFantasia = contratadaNomeFantasia;
+    }
+
+    public String getMatriculaFiscal() {
+        return matriculaFiscal;
+    }
+
+    public void setMatriculaFiscal(String matriculaFiscal) {
+        this.matriculaFiscal = matriculaFiscal;
     }
 
     @Override
@@ -138,7 +149,8 @@ public class Obra implements Serializable {
                 ", valorAtual=" + valorAtual +
                 ", totalExecutado=" + totalExecutado +
                 ", saldoAMedir=" + saldoAMedir +
-                ", contratadaNomeFantasia='" + contratadaNomeFantasia + '\'' +
+                ", contratadaNomeFantasia=" + contratadaNomeFantasia +
+                ", matriculaFiscal='" + matriculaFiscal + '\'' +
                 '}';
     }
 }

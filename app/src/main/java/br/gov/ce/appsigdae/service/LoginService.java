@@ -29,7 +29,6 @@ import cz.msebera.android.httpclient.Header;
  */
 public class LoginService {
 
-    private User user = new User();
     private List<User> listaUser = new ArrayList<User>();
 
     public void validarCamposLogin(final LoginValidation validation) {
@@ -72,6 +71,7 @@ public class LoginService {
                         editor.putString("nome", listaUser.get(0).getFirstname());
                         editor.putString("nomeCompleto", listaUser.get(0).getNomeCompleto());
                         editor.putString("email", listaUser.get(0).getEmail());
+                        editor.putString("logado", "sim");
                         editor.commit();
 
                         // Chamar a Tela de Home
