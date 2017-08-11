@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -51,12 +50,12 @@ public class LoginService {
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers, String resultado, Throwable throwable) {
-                    Log.e(LoginService.class.getName(), "Erro no login do usuario! Http Code:" + statusCode, throwable);
                     Util.showMsgSimpleToast(activity, "Erro no login do usuario!");
                 }
 
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                    System.out.println(response);
                     Gson gson = new Gson();
 
                     Type type = new TypeToken<List<User>>() {
@@ -84,5 +83,6 @@ public class LoginService {
                 }
             });
         }
+        Util.showMsgSimpleToast(activity, "Não foi possível conectar ao WebService");
     }
 }
