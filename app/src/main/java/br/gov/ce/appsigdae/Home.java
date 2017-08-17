@@ -93,11 +93,9 @@ public class Home extends AppCompatActivity {
                 // Chamado quando o status HTTP de resposta é "200 OK"
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                    final Gson gson = new Gson();
-
                     Type type = new TypeToken<List<Obra>>() {
                     }.getType();
-                    listaObra = gson.fromJson(response.toString(), type);
+                    listaObra = new Gson().fromJson(response.toString(), type);
 
                     listaObras = (ListView) findViewById(R.id.listaObras);
                     adapter = new ArrayAdapter(Home.this, android.R.layout.simple_list_item_1);
