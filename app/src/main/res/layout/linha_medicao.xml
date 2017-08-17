@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:elevation="4dp"
+        app:cardCornerRadius="4dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <RelativeLayout
+                android:id="@+id/lytMain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtNrMedicao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:text="Número "
+                    android:textStyle="bold"
+                    android:textColor="@color/preto"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/nrMedicao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/txtNrMedicao"
+                    android:textColor="@color/preto"
+                    android:textSize="15sp" />
+
+
+                <TextView
+                    android:id="@+id/txtValorMedido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Valor Medido "
+                    android:layout_marginLeft="50dp"
+                    android:layout_toRightOf="@id/nrMedicao"
+                    android:textStyle="bold"
+                    android:textColor="@color/preto"
+                    android:textSize="15sp"
+                    android:layout_alignParentTop="true" />
+
+                <TextView
+                    android:id="@+id/valorMedido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:gravity="right"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/txtDataInicio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Data Inicio "
+                    android:layout_below="@id/nrMedicao"
+                    android:textStyle="bold"
+                    android:textColor="@color/preto"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/dataInicio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/nrMedicao"
+                    android:layout_toRightOf="@id/txtDataInicio"
+                    android:textSize="15sp" />
+
+
+                <TextView
+                    android:id="@+id/txtDataFim"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Data Fim "
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/dataInicio"
+                    android:layout_below="@id/valorMedido"
+                    android:textStyle="bold"
+                    android:textColor="@color/preto"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/dataFim"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/valorMedido"
+                    android:gravity="right"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/txtStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Status "
+                    android:layout_below="@id/txtDataInicio"
+                    android:textStyle="bold"
+                    android:textColor="@color/preto"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/dataInicio"
+                    android:layout_toRightOf="@id/txtStatus"
+                    android:textSize="15sp" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>

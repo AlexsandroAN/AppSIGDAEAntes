@@ -1,14 +1,26 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="br.gov.ce.appsigdae.fragment.FragmentMedicoes">
+    android:orientation="vertical"
+    android:padding="10dp">
 
-
-    <TextView
+    <RelativeLayout
+        android:id="@+id/lytLoadingMedicoes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textColor="@color/preto"
-        android:text="Teste denovo" />
+        android:gravity="center">
 
-</ScrollView>
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="120dp"
+        android:scrollbars="vertical" />
+
+</LinearLayout>
