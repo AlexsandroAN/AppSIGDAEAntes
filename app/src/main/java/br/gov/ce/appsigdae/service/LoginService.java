@@ -55,13 +55,10 @@ public class LoginService {
 
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                    System.out.println(response);
-                    Gson gson = new Gson();
-
                     Type type = new TypeToken<List<User>>() {
                     }.getType();
 
-                    listaUser = gson.fromJson(response.toString(), type);
+                    listaUser = new Gson().fromJson(response.toString(), type);
 
                     if (!listaUser.isEmpty()) {
                         SharedPreferences.Editor editor = activity.getSharedPreferences("pref", Context.MODE_PRIVATE).edit();
@@ -83,6 +80,6 @@ public class LoginService {
                 }
             });
         }
-        Util.showMsgSimpleToast(activity, "Não foi possível conectar ao WebService");
+      //  Util.showMsgSimpleToast(activity, "Não foi possível conectar ao WebService");
     }
 }
