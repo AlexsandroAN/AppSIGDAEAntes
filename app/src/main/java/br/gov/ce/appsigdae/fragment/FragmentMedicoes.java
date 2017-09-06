@@ -33,11 +33,10 @@ import cz.msebera.android.httpclient.Header;
 
 public class FragmentMedicoes extends Fragment {
 
-    private RecyclerView rv;
+    private RecyclerView rv  ;
     private String codigoObra;
     private List<MedicaoObra> listaMedicaoObra = new ArrayList<MedicaoObra>();
     private Obra obra;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
