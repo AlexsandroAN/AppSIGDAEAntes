@@ -20,6 +20,8 @@ public class FragmentObra extends Fragment {
     private TextView descricaoObra, vlAtual, vlMedido, vlSaldo;
     private Obra obra;
 
+
+
     // Formatando BIgDecimal
     Locale ptBr = new Locale("pt", "BR");
     NumberFormat formato = NumberFormat.getCurrencyInstance(ptBr);
@@ -28,7 +30,6 @@ public class FragmentObra extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-
 
     @Nullable
     @Override
