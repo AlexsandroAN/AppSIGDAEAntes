@@ -43,6 +43,7 @@ public class FragmentMedicoes extends Fragment {
         super.onCreate(savedInstanceState);
 
 
+
     }
 
     @Nullable
